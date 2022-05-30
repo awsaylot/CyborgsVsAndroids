@@ -1,10 +1,14 @@
 import java.lang.Math;
+import java.util.HashMap;
 
 public class Android extends Humanoid {
+    private HashMap<String, int[]> drops = new HashMap<>();
 
     public Android(int x, int y) {
         this.position = new int[]{x, y};
         Land.setTile(this,new int[]{x, y});
+        this.strength = 10;
+        drops.put("Laser", new int[]{0, 20});
     }
     private Humanoid closestTarget() {
         double shortest = 14;
@@ -45,5 +49,8 @@ public class Android extends Humanoid {
     @Override
     public String toString() {
         return "A";
+    }
+    public HashMap<String, int[]> getDrops() {
+        return drops;
     }
 }

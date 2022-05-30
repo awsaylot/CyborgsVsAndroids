@@ -1,9 +1,9 @@
 public class Main {
     public static void main(String[] args) {
         Land.createGrid();
-        Cyborg player = new Cyborg(0, 7);
+        Cyborg player = new Cyborg(1, 7);
         Land.addCyborg(player);
-        Cyborg player2 = new Cyborg(1, 7);
+        Cyborg player2 = new Cyborg(0, 7);
         Land.addCyborg(player2);
         Land.addAndroid(new Android(7, 0));
         Land.drawGrid();
@@ -19,3 +19,4 @@ public class Main {
         }
     }
 }
+

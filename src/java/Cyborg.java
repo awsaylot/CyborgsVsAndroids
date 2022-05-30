@@ -1,6 +1,8 @@
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Cyborg extends Humanoid {
+    HashMap<String, int[]> inventory = new HashMap<>();
 
     public Cyborg(int x, int y) {
         this.position = new int[]{x, y};
@@ -22,5 +24,11 @@ public class Cyborg extends Humanoid {
     @Override
     public String toString() {
         return "C";
+    }
+
+    public void pickUpDrop(String key, int[] stats) {
+        inventory.put(key, stats);
+        this.health += stats[0];
+        this.strength += stats[1];
     }
 }

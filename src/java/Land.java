@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
+import java.util.Set;
 
 public class Land {
     static int gridSize = 8;
@@ -20,7 +22,7 @@ public class Land {
     static void drawGrid(){
         grid.forEach(row-> {
             row.forEach(square->{
-                System.out.print(square+ " ");
+                System.out.print(square+ "  ");
             });
             System.out.println();
         });
@@ -67,6 +69,7 @@ public class Land {
                 if (target.getClass().getSimpleName() == "Cyborg") {
                     cyborgs.remove(target);
                 } else {
+                    giveDrops((Android) target, (Cyborg) object);
                     androids.remove(target);
                 }
                 return true;
@@ -77,5 +80,12 @@ public class Land {
         }
         System.out.println("Opponent dodged your attack");
         return false;
+    }
+    static void generateTreasure() {
+
+    }
+    private static void giveDrops(Android target, Cyborg object){
+        HashMap<String, int[]> drops = target.getDrops();
+        drops.keySet().forEach(drop-> object.pickUpDrop(drop, drops.get(drop)));
     }
 }
